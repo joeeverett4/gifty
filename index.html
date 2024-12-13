@@ -14,16 +14,20 @@
       // create a new instance of the Gadget client at the `api` global connected to the Development environment
       window.api = new Gadget();
 
-      let link = await api.links.findMany({
-        filter: {
-          campaignId: {
-            equals: "9",
+      async function fetchLinks() {
+        let link = await api.links.findMany({
+          filter: {
+            campaignId: {
+              equals: "9",
+            },
           },
-        },
-      });
+        });
 
-      console.log("linksd")
-      console.log(link)
+        console.log("linksd");
+        console.log(link);
+      }
+
+      fetchLinks(); // Call the async function
     </script>
 </head>
 <body>
