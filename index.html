@@ -1,28 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue App</title>
-    <!-- Include Vue.js from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="app">
-        {{ message }}
-    </div>
-
-    <script>
-        // Create a new Vue instance
-        const app = Vue.createApp({
-            data() {
-                return {
-                    message: 'Hello Vue!'
-                }
-            }
-        });
-        app.mount('#app');
-    </script>
-</body>
-</html>
+<template></template>
+    <Page :title="newName">
+      <Layout>
+        <LayoutSection>
+          <div id="form-a">
+            <div class="tab">
+              <div class="green"></div>
+              <div class="red"></div>
+              <div class="yellow"></div>
+            </div>
+            <Card>
+              <BlockStack gap="400">
+                <div class="header-container">
+                  <h1 class="header">Contact</h1>
+                </div>
+                <div class="form-container">
+                  <div class="custom-input" v-for="(field, key) in formFields" :key="key">
+                    <label>{{ field.label }}</label>
+                    <input
+                      :type="field.type"
+                      v-model="field.value"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+                <div class="product-container">
+                  <h1 class="header">Choose products</h1>
+                  <div class="dub-product-container">
+                    <div class="item-container" v-for="(product, index) in products" :key="index">
+                      <img
+                        :src="product.images[0].originalSrc"
+                        :alt="product.title"
+                        style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
+                      />
+                      <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
+                    </div>
+                  </div>
+                </div>
+              </BlockStack>
+            </Card>
+          </div>
+        </LayoutSection>
+      </Layout>
+    </Page>
+  </template>
+  
+  <script>
+  import { ref } from 'vue';
+  
+  export default {
+    setup() {
+      const newName = ref('yo');
+      const formFields = ref({
+        firstName: { label: 'First Name', value: '', type: 'text' },
+        lastName: { label: 'Last Name', value: '', type: 'text' },
+        email: { label: 'Email', value: '', type: 'email' },
+        instagram: { label: 'Instagram', value: '', type: 'text' },
+        tiktok: { label: 'TikTok', value: '', type: 'text' },
+      });
+      const products = ref([
+        {
+          title: 'Product 1',
+          images: [{ originalSrc: 'path/to/image1.jpg' }],
+          variants: [{ price: '10.00' }]
+        },
+        {
+          title: 'Product 2',
+          images: [{ originalSrc: 'path/to/image2.jpg' }],
+          variants: [{ price: '20.00' }]
+        }
+      ]);
+  
+      const saveProducts = () => {
+        // Implement save logic here
+      };
+  
+      return {
+        newName,
+        formFields,
+        products,
+        saveProducts,
+      };
+    },
+  };
+  </script>
+  
+  <style scoped>
+  /* Add your styles here */
+  </style>
