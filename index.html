@@ -46,7 +46,7 @@
       console.log(link);
       let products = JSON.parse(link.products);
       console.log(products);
-      return products; // Return the products
+      return { products, shopName: campaign.shopName }; // Return the products and shopName
     }
   </script>
   <style>
@@ -102,6 +102,9 @@
 
 <body>
   <div id="app">
+    <div class="shop-container">
+      <h2>{{ shopName }}</h2>
+    </div>
     <div class="header-container">
       <h1 class="header">Contact</h1>
     </div>
@@ -190,11 +193,14 @@
           country: '',
           zipCode: '',
           products: [], // Assuming products data will be populated
-          cart: [] // Array to hold products added to the cart
+          cart: [], // Array to hold products added to the cart
+          shopName: '' // Variable to hold the shop name
         }
       },
       async mounted() {
-        this.products = await fetchLinks(); // Fetch and set products when the component is mounted
+        const data = await fetchLinks(); // Fetch and set products and shopName when the component is mounted
+        this.products = data.products;
+        this.shopName = data.shopName;
       },
       methods: {
         addToCart(product) {
