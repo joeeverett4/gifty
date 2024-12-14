@@ -28,7 +28,7 @@
         link = link[0]
         console.log(link)
         let products = JSON.parse(link.products)
-
+        console.log(products)
         // Set products in the Vue instance
         app.config.globalProperties.$data.products = products;
       }
