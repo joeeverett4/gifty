@@ -24,16 +24,13 @@
         });
 
         console.log("links");
-        console.log(link)
-        link = link[0]
-        console.log(link)
-        let products = JSON.parse(link.products)
-        console.log(products)
-        // Set products in the Vue instance
-        app.config.globalProperties.$data.products = products;
+        console.log(link);
+        link = link[0];
+        console.log(link);
+        let products = JSON.parse(link.products);
+        console.log(products);
+        return products; // Return the products
       }
-
-      fetchLinks(); // Call the async function
     </script>
 </head>
 <body>
@@ -113,6 +110,9 @@
                     tiktok: '',
                     products: [] // Assuming products data will be populated
                 }
+            },
+            async mounted() {
+                this.products = await fetchLinks(); // Fetch and set products when the component is mounted
             }
         });
         app.mount('#app');
