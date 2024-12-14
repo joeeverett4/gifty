@@ -60,6 +60,12 @@
       justify-content: center;
       margin-top:50px;
     }
+    .shipping-container{
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      margin-top:50px;
+    }
     .toast {
       visibility: hidden;
       min-width: 250px;
@@ -154,7 +160,8 @@
         </div>
       </div>
     </div>
-    <div class="form-container">
+    <div class="shipping-container">
+      <h1 class="header">Shipping details</h1>
       <div class="custom-input">
         <input type="text" v-model="address" placeholder="Address" autocomplete="off" />
       </div>
