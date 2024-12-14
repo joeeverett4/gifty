@@ -23,7 +23,7 @@
           },
         });
 
-        console.log("linksd");
+        console.log("links");
         console.log(link);
       }
 
@@ -32,7 +32,66 @@
 </head>
 <body>
     <div id="app">
-        {{ message }}
+      <div class="header-container">
+        <h1 class="header">Contact</h1>
+      </div>
+      <div class="form-container">
+
+        <div class="custom-input">
+          <label>First Name</label>
+          <input
+            type="text"
+            v-model="firstName"
+            autocomplete="off"
+          />
+        </div>
+        <div class="custom-input">
+          <label>Last Name</label>
+          <input
+            type="text"
+            v-model="lastName"
+            autocomplete="off"
+          />
+        </div>
+        <div class="custom-input">
+          <label>Email</label>
+          <input
+            type="email"
+            v-model="email"
+            autocomplete="off"
+          />
+        </div>
+        <div class="custom-input">
+          <label>Instagram</label>
+          <input
+            type="text"
+            v-model="instagram"
+            autocomplete="off"
+          />
+        </div>
+        <div class="custom-input">
+          <label>TikTok</label>
+          <input
+            type="text"
+            v-model="tiktok"
+            autocomplete="off"
+          />
+        </div>
+
+      </div>
+      <div class="product-container">
+      <h1 class="header">Choose products</h1>
+      <div class="dub-product-container">
+      <div v-for="(product, index) in products" :key="index" class="item-container">
+          <img 
+            :src="product.images[0].originalSrc" 
+            :alt="product.title" 
+            style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
+          />
+          <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
+        </div>
+      </div>
+      </div>
     </div>
 
     <script>
@@ -40,7 +99,13 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    message: 'Hello Vue!'
+                    message: 'Hello Vue!',
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    instagram: '',
+                    tiktok: '',
+                    products: [] // Assuming products data will be populated
                 }
             }
         });
