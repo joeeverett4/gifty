@@ -16,6 +16,18 @@
     window.api = new Gadget();
 
     async function fetchLinks() {
+
+      let campaign = await api.campaign.findMany({
+        filter: {
+          id: {
+            equals: "1",
+          },
+        },
+      });
+
+      console.log("campaign")
+      console.log(campaign)
+
       let link = await api.links.findMany({
         filter: {
           campaignId: {

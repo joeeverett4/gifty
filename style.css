@@ -28,7 +28,7 @@
     margin-top:20px
   }
   .header{
-    font-size:32px;
+    font-size:24px;
   
   }
   .form-container{
@@ -36,7 +36,6 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top:31px;
   }
   
   .product-container{
@@ -57,7 +56,7 @@
     display: flex;
     justify-content: start;
     flex-direction: column;
-    margin-top:30px;
+    margin-top:10px;
   }
   
   .dub-product-container img{
