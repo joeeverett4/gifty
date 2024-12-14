@@ -92,6 +92,7 @@
             style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
           />
           <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
+          <button @click="addToCart(product)">Add to Cart</button>
         </div>
       </div>
       </div>
@@ -108,11 +109,18 @@
                     email: '',
                     instagram: '',
                     tiktok: '',
-                    products: [] // Assuming products data will be populated
+                    products: [], // Assuming products data will be populated
+                    cart: [] // Array to hold products added to the cart
                 }
             },
             async mounted() {
                 this.products = await fetchLinks(); // Fetch and set products when the component is mounted
+            },
+            methods: {
+                addToCart(product) {
+                    this.cart.push(product);
+                    console.log('Product added to cart:', product);
+                }
             }
         });
         app.mount('#app');
