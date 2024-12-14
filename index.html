@@ -28,6 +28,10 @@
       console.log("campaign")
       console.log(campaign)
 
+      campaign = campaign[0]
+
+      console.log(campaign.shopName)
+
       let link = await api.links.findMany({
         filter: {
           campaignId: {
