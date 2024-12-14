@@ -24,7 +24,11 @@
         });
 
         console.log("links");
-        console.log(link);
+        link = link[0]
+        let products = JSON.parse(link.products)
+
+        // Set products in the Vue instance
+        app.config.globalProperties.$data.products = products;
       }
 
       fetchLinks(); // Call the async function
