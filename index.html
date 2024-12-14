@@ -1,129 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue App</title>
-    <!-- Include Vue.js from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
-    <!-- Link to style.css -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Include Gadget client script -->
-    <script src="https://gifty--development.gadget.app/api/client/web.min.js"></script>
-    <script>
-      // create a new instance of the Gadget client at the `api` global connected to the Development environment
-      window.api = new Gadget();
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gifty</title>
+  <!-- Include Vue.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <!-- Link to style.css -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Include Gadget client script -->
+  <script src="https://gifty--development.gadget.app/api/client/web.min.js"></script>
+  <script>
+    // create a new instance of the Gadget client at the `api` global connected to the Development environment
+    window.api = new Gadget();
 
-      async function fetchLinks() {
-        let link = await api.links.findMany({
-          filter: {
-            campaignId: {
-              equals: "9",
-            },
+    async function fetchLinks() {
+      let link = await api.links.findMany({
+        filter: {
+          campaignId: {
+            equals: "9",
           },
-        });
+        },
+      });
 
-        console.log("links");
-        console.log(link);
-        link = link[0];
-        console.log(link);
-        let products = JSON.parse(link.products);
-        console.log(products);
-        return products; // Return the products
-      }
-    </script>
+      console.log("links");
+      console.log(link);
+      link = link[0];
+      console.log(link);
+      let products = JSON.parse(link.products);
+      console.log(products);
+      return products; // Return the products
+    }
+  </script>
 </head>
+
 <body>
-    <div id="app">
-      <div class="header-container">
-        <h1 class="header">Contact</h1>
-      </div>
-      <div class="form-container">
+  <div id="app">
+    <div class="header-container">
+      <h1 class="header">Contact</h1>
+    </div>
+    <div class="form-container">
 
-        <div class="custom-input">
-          <label>First Name</label>
-          <input
-            type="text"
-            v-model="firstName"
-            autocomplete="off"
-          />
-        </div>
-        <div class="custom-input">
-          <label>Last Name</label>
-          <input
-            type="text"
-            v-model="lastName"
-            autocomplete="off"
-          />
-        </div>
-        <div class="custom-input">
-          <label>Email</label>
-          <input
-            type="email"
-            v-model="email"
-            autocomplete="off"
-          />
-        </div>
-        <div class="custom-input">
-          <label>Instagram</label>
-          <input
-            type="text"
-            v-model="instagram"
-            autocomplete="off"
-          />
-        </div>
-        <div class="custom-input">
-          <label>TikTok</label>
-          <input
-            type="text"
-            v-model="tiktok"
-            autocomplete="off"
-          />
-        </div>
-
+      <div class="custom-input">
+        <label>First Name</label>
+        <input type="text" v-model="firstName" autocomplete="off" />
       </div>
-      <div class="product-container">
+      <div class="custom-input">
+        <label>Last Name</label>
+        <input type="text" v-model="lastName" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label>Email</label>
+        <input type="email" v-model="email" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label>Instagram</label>
+        <input type="text" v-model="instagram" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label>TikTok</label>
+        <input type="text" v-model="tiktok" autocomplete="off" />
+      </div>
+
+    </div>
+    <div class="product-container">
       <h1 class="header">Choose products</h1>
       <div class="dub-product-container">
-      <div v-for="(product, index) in products" :key="index" class="item-container">
-          <img 
-            :src="product.images[0].originalSrc" 
-            :alt="product.title" 
-            style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
-          />
+        <div v-for="(product, index) in products" :key="index" class="item-container">
+          <img :src="product.images[0].originalSrc" :alt="product.title"
+            style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
           <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
-          <button @click="addToCart(product)">Add to Cart</button>
+          <button @click="addToCart(product)"
+            style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Add
+            to Cart</button>
         </div>
       </div>
-      </div>
     </div>
+    <div class="submit-container">
+      <button @click="submitForm"
+        style="background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Submit</button>
+    </div>
+  </div>
 
-    <script>
-        // Create a new Vue instance
-        const app = Vue.createApp({
-            data() {
-                return {
-                    message: 'Hello Vue!',
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    instagram: '',
-                    tiktok: '',
-                    products: [], // Assuming products data will be populated
-                    cart: [] // Array to hold products added to the cart
-                }
-            },
-            async mounted() {
-                this.products = await fetchLinks(); // Fetch and set products when the component is mounted
-            },
-            methods: {
-                addToCart(product) {
-                    this.cart.push(product);
-                    console.log('Product added to cart:', product);
-                }
-            }
-        });
-        app.mount('#app');
-    </script>
+  <script>
+    // Create a new Vue instance
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: 'Hello Vue!',
+          firstName: '',
+          lastName: '',
+          email: '',
+          instagram: '',
+          tiktok: '',
+          products: [], // Assuming products data will be populated
+          cart: [] // Array to hold products added to the cart
+        }
+      },
+      async mounted() {
+        this.products = await fetchLinks(); // Fetch and set products when the component is mounted
+      },
+      methods: {
+        addToCart(product) {
+          this.cart.push(product);
+          console.log('Product added to cart:', product);
+        },
+        async submitForm() {
+          const orderRecord = await api.order.create({
+            cart: JSON.stringify(products),
+            linkId: "example value for linkId",
+          });
+          console.log('Order created:', orderRecord);
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
 </body>
+
 </html>
