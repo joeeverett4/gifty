@@ -138,6 +138,62 @@ function getUrlParams() {
       from {bottom: 30px; opacity: 1;}
       to {bottom: 0; opacity: 0;}
     }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 24px;
+      display: none;
+    }
+
+    .cart-icon.show {
+      display: block;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      display: none;
+      z-index: 2;
+    }
+
+    .cart-overlay.show {
+      display: block;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+    }
+
+    .cart-item-quantity {
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
 
@@ -210,6 +266,18 @@ function getUrlParams() {
         style="background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Submit</button>
     </div>
     <div id="toast" class="toast">Product added to cart!</div>
+    <div class="cart-icon" :class="{ show: cart.length > 0 }" @click="toggleCartOverlay">
+      🛒
+    </div>
+    <div class="cart-overlay" :class="{ show: isCartOverlayVisible }">
+      <div v-for="(item, index) in cart" :key="index" class="cart-item">
+        <img :src="item.images[0].originalSrc" :alt="item.title" />
+        <div class="cart-item-details">
+          <div class="cart-item-title">{{ item.title }}</div>
+          <div class="cart-item-quantity">Quantity: {{ item.quantity }}</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -230,7 +298,8 @@ function getUrlParams() {
           zipCode: '',
           products: [], // Assuming products data will be populated
           cart: [], // Array to hold products added to the cart
-          shopName: '' // Variable to hold the shop name
+          shopName: '', // Variable to hold the shop name
+          isCartOverlayVisible: false // Variable to control the visibility of the cart overlay
         }
       },
       async mounted() {
@@ -251,6 +320,9 @@ function getUrlParams() {
           const toast = document.getElementById("toast");
           toast.className = "toast show";
           setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        },
+        toggleCartOverlay() {
+          this.isCartOverlayVisible = !this.isCartOverlayVisible;
         },
         async submitForm() {
           const orderRecord = await api.order.create({
