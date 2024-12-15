@@ -96,6 +96,27 @@ function getUrlParams() {
       height:65px;
     }
 
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .quantity-selector label {
+      margin-right: 10px;
+      font-weight: 600;
+    }
+
+    .quantity-selector input {
+      width: 60px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 16px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     @-webkit-keyframes fadein {
       from {bottom: 0; opacity: 0;}
       to {bottom: 30px; opacity: 1;}
@@ -155,7 +176,7 @@ function getUrlParams() {
           <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
           <div class="quantity-selector">
             <label for="quantity">Quantity:</label>
-            <input type="number" v-model.number="product.quantity" min="1" value="1" style="width: 50px; margin-right: 10px;">
+            <input type="number" v-model.number="product.quantity" min="1" value="1">
           </div>
           <button @click="addToCart(product)"
             style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Add
