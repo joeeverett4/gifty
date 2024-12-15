@@ -217,6 +217,8 @@ function getUrlParams() {
       },
       async mounted() {
         const { campaignId, linkId } = getUrlParams(); 
+        console.log(campaignId)
+        console.log(linkId)
         const data = await fetchLinks(); // Fetch and set products and shopName when the component is mounted
         this.products = data.products;
         this.shopName = data.shopName;
