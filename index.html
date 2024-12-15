@@ -43,22 +43,7 @@ function getUrlParams() {
 
       const linkYO = await api.links.findOne(linkId);
 
-      console.log("linkYOh")
-      console.log(linkYO)
-      console.log(linkYO.limit)
-      console.log(linkYO.products)
-      console.log(linkYO[0])
-
-      let link = await api.links.findMany({
-        filter: {
-          campaignId: {
-            equals: linkId,
-          },
-        },
-      });
-
-     // link = link[0];
-     
+ 
       let products = JSON.parse(linkYO.products);
       
       return { products, shopName: campaign.shopName }; // Return the products and shopName
@@ -168,6 +153,10 @@ function getUrlParams() {
             style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
           <div style = "display:flex;flex-direction:column"> 
           <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
+          <div class="quantity-selector">
+            <label for="quantity">Quantity:</label>
+            <input type="number" v-model.number="product.quantity" min="1" value="1" style="width: 50px; margin-right: 10px;">
+          </div>
           <button @click="addToCart(product)"
             style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Add
             to Cart</button>
@@ -226,12 +215,12 @@ function getUrlParams() {
         console.log(campaignId)
         console.log(linkId)
         const data = await fetchLinks(campaignId,linkId); // Fetch and set products and shopName when the component is mounted
-        this.products = data.products;
+        this.products = data.products.map(product => ({ ...product, quantity: 1 })); // Initialize quantity to 1 for each product
         this.shopName = data.shopName;
       },
       methods: {
         addToCart(product) {
-          this.cart.push(product);
+          this.cart.push({ ...product, quantity: product.quantity });
           console.log('Product added to cart:', product);
           this.showToast();
         },
