@@ -319,7 +319,12 @@ function getUrlParams() {
       },
       methods: {
         addToCart(product) {
-          this.cart.push({ ...product, quantity: product.quantity });
+          const existingProductIndex = this.cart.findIndex(item => item.id === product.id);
+          if (existingProductIndex !== -1) {
+            this.cart[existingProductIndex].quantity += product.quantity;
+          } else {
+            this.cart.push({ ...product, quantity: product.quantity });
+          }
           console.log('Product added to cart:', product);
           this.showToast();
         },
