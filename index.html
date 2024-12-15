@@ -13,7 +13,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://gifty--development.gadget.app/api/client/web.min.js"></script>
   <script>
-    // create a new instance of the Gadget client at the `api` global connected to the Development environment
+
+function getUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      campaignId: params.get('campaignId') || 'defaultCampaignId', // Default value if not present
+      linkId: params.get('linkId') || 'defaultLinkId' // Default value if not present
+    };
+  }
+
     window.api = new Gadget();
 
     async function fetchLinks() {
@@ -208,6 +216,7 @@
         }
       },
       async mounted() {
+        const { campaignId, linkId } = getUrlParams(); 
         const data = await fetchLinks(); // Fetch and set products and shopName when the component is mounted
         this.products = data.products;
         this.shopName = data.shopName;
