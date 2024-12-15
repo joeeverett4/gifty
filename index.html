@@ -43,8 +43,9 @@ function getUrlParams() {
 
       const linkYO = await api.links.findOne(linkId);
 
-      console.log("linkYO")
+      console.log("linkYOh")
       console.log(linkYO)
+      console.log(linkYO[0])
 
       let link = await api.links.findMany({
         filter: {
@@ -56,7 +57,7 @@ function getUrlParams() {
 
      // link = link[0];
      
-      let products = JSON.parse(linkYO.products);
+      let products = JSON.parse(linkYO[0].products);
       
       return { products, shopName: campaign.shopName }; // Return the products and shopName
     }
