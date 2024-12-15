@@ -24,12 +24,12 @@ function getUrlParams() {
 
     window.api = new Gadget();
 
-    async function fetchLinks() {
+    async function fetchLinks(campaignId,linkId) {
 
       let campaign = await api.campaign.findMany({
         filter: {
           id: {
-            equals: "1",
+            equals: campaignId,
           },
         },
       });
@@ -44,7 +44,7 @@ function getUrlParams() {
       let link = await api.links.findMany({
         filter: {
           campaignId: {
-            equals: "9",
+            equals: linkId,
           },
         },
       });
@@ -219,7 +219,7 @@ function getUrlParams() {
         const { campaignId, linkId } = getUrlParams(); 
         console.log(campaignId)
         console.log(linkId)
-        const data = await fetchLinks(); // Fetch and set products and shopName when the component is mounted
+        const data = await fetchLinks(campaignId,linkId); // Fetch and set products and shopName when the component is mounted
         this.products = data.products;
         this.shopName = data.shopName;
       },
