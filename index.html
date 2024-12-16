@@ -26,6 +26,12 @@ function getUrlParams() {
 
     async function fetchLinks(campaignId,linkId) {
 
+      let email = await api.email.findFirst()
+
+      console.log("email")
+      console.log(email)
+
+
       let campaign = await api.campaign.findMany({
         filter: {
           id: {
