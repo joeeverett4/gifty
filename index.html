@@ -341,11 +341,14 @@ function getUrlParams() {
           this.isCartOverlayVisible = !this.isCartOverlayVisible;
         },
         async submitForm() {
+          /*
           const orderRecord = await api.order.create({
             cart: JSON.stringify(this.products), // Use this.products to reference the data property
             linkId: "example value for linkId",
           });
-          console.log('Order created:', orderRecord);
+          */
+         // console.log('Order created:', orderRecord);
+         console.log(this.cart)
         }
       }
     });
