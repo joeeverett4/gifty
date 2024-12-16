@@ -45,6 +45,9 @@ function getUrlParams() {
 
  
       let products = JSON.parse(linkYO.products);
+
+      console.log("hollow products")
+      console.log(products)
       
       return { products, shopName: campaign.shopName }; // Return the products and shopName
     }
