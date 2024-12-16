@@ -286,7 +286,7 @@ function getUrlParams() {
         <img :src="item.images[0].originalSrc" :alt="item.title" />
         <div class="cart-item-details">
           <div class="cart-item-title">{{ item.title }}</div>
-          <div v-if="item.variants.find(variant => variant.id === item.selectedVariantId).title !== 'Default Title'" class="cart-item-variant">Variant: {{ item.variants.find(variant => variant.id === item.selectedVariantId).title }}</div>
+          <div v-if="item.variants.length > 1" class="cart-item-variant">Variant: {{ item.variants.find(variant => variant.id === item.selectedVariantId).title }}</div>
           <div class="cart-item-quantity">Quantity: {{ item.quantity }}</div>
         </div>
         <div class="remove-icon" @click="removeFromCart(index)">🗑️</div>
