@@ -200,6 +200,24 @@ function getUrlParams() {
       font-size: 20px;
       color: red;
     }
+
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #ffffff;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 
@@ -274,8 +292,11 @@ function getUrlParams() {
       </div>
     </div>
     <div class="submit-container">
-      <button @click="submitForm"
-        style="background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Submit</button>
+      <button @click="submitForm" :disabled="isSubmitting"
+        style="background-color: #008CBA; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <span v-if="isSubmitting" class="spinner"></span>
+        <span v-else>Submit</span>
+      </button>
     </div>
     <div id="toast" class="toast">Product added to cart!</div>
     <div class="cart-icon" :class="{ show: cart.length > 0 }" @click="toggleCartOverlay">
@@ -314,7 +335,8 @@ function getUrlParams() {
           cart: [], // Array to hold products added to the cart
           shopName: '', // Variable to hold the shop name
           isCartOverlayVisible: false, // Variable to control the visibility of the cart overlay
-          linkId: '' // Variable to hold the linkId
+          linkId: '', // Variable to hold the linkId
+          isSubmitting: false // Variable to control the loading state of the submit button
         }
       },
       async mounted() {
@@ -350,6 +372,7 @@ function getUrlParams() {
           this.isCartOverlayVisible = !this.isCartOverlayVisible;
         },
         async submitForm() {
+          this.isSubmitting = true; // Set loading state to true
           const orderRecord = await api.order.create({
             cart: JSON.stringify(this.cart), 
             linkId: this.linkId, 
