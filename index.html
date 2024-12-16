@@ -306,7 +306,8 @@ function getUrlParams() {
           products: [], // Assuming products data will be populated
           cart: [], // Array to hold products added to the cart
           shopName: '', // Variable to hold the shop name
-          isCartOverlayVisible: false // Variable to control the visibility of the cart overlay
+          isCartOverlayVisible: false, // Variable to control the visibility of the cart overlay
+          linkId: '' // Variable to hold the linkId
         }
       },
       async mounted() {
@@ -316,6 +317,7 @@ function getUrlParams() {
         const data = await fetchLinks(campaignId,linkId); // Fetch and set products and shopName when the component is mounted
         this.products = data.products.map(product => ({ ...product, quantity: 1 })); // Initialize quantity to 1 for each product
         this.shopName = data.shopName;
+        this.linkId = linkId; // Set the linkId
       },
       methods: {
         addToCart(product) {
@@ -341,12 +343,21 @@ function getUrlParams() {
           this.isCartOverlayVisible = !this.isCartOverlayVisible;
         },
         async submitForm() {
-          /*
           const orderRecord = await api.order.create({
-            cart: JSON.stringify(this.products), // Use this.products to reference the data property
-            linkId: "example value for linkId",
+            cart: JSON.stringify(this.cart), 
+            linkId: this.linkId, 
+            first_name: this.firstName,
+            last_name: this.lastName,
+            email: this.email,
+            insta_handle: this.instagram,
+            tiktok_handle: this.tiktok,
+            address: this.address,
+            unit_no: this.unitNo,
+            city: this.city,
+            country: this.country,
+            zip_code: this.zipCode
           });
-          */
+          
          // console.log('Order created:', orderRecord);
          console.log(this.cart)
         }
