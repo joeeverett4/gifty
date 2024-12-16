@@ -46,9 +46,6 @@ function getUrlParams() {
  
       let products = JSON.parse(linkYO.products);
 
-      console.log("hollow products")
-      console.log(products)
-      
       return { products, shopName: campaign.shopName }; // Return the products and shopName
     }
   </script>
@@ -241,6 +238,12 @@ function getUrlParams() {
             style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
           <div style = "display:flex;flex-direction:column"> 
           <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
+          <div v-if="product.variants.length > 1" class="variant-selector">
+            <label for="variant">Variant:</label>
+            <select v-model="product.selectedVariantId">
+              <option v-for="variant in product.variants" :value="variant.id">{{ variant.title }}</option>
+            </select>
+          </div>
           <div class="quantity-selector">
             <label for="quantity">Quantity:</label>
             <input type="number" v-model.number="product.quantity" min="1" value="1">
@@ -318,13 +321,13 @@ function getUrlParams() {
         console.log(campaignId)
         console.log(linkId)
         const data = await fetchLinks(campaignId,linkId); // Fetch and set products and shopName when the component is mounted
-        this.products = data.products.map(product => ({ ...product, quantity: 1 })); // Initialize quantity to 1 for each product
+        this.products = data.products.map(product => ({ ...product, quantity: 1, selectedVariantId: product.variants[0].id })); // Initialize quantity to 1 and selectedVariantId to the first variant for each product
         this.shopName = data.shopName;
         this.linkId = linkId; // Set the linkId
       },
       methods: {
         addToCart(product) {
-          const existingProductIndex = this.cart.findIndex(item => item.id === product.id);
+          const existingProductIndex = this.cart.findIndex(item => item.id === product.id && item.selectedVariantId === product.selectedVariantId);
           if (existingProductIndex !== -1) {
             this.cart[existingProductIndex].quantity += product.quantity;
           } else {
