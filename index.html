@@ -390,7 +390,9 @@ function getUrlParams() {
           
          // console.log('Order created:', orderRecord);
          console.log(this.cart)
-         window.location.href = 'complete.html'; // Navigate to contact.html
+         setTimeout(() => {
+           window.location.href = 'complete.html'; // Navigate to contact.html
+         }, 5000); // 5 seconds timeout
         }
       }
     });
