@@ -7,19 +7,28 @@
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #ff69b4; /* Fun pink color */
   }
   
   .custom-input input {
-    width: 400px;
-    height: 36px;
-    padding: 0px 10px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(61, 59, 53, 0.16) 0px 0px 0px 1px, rgba(61, 59, 53, 0.08) 0px 2px 5px 0px;
-    border: 0px;
-    border-radius: 5px;
+    width: 220px;
+    height: 40px;
+    padding: 0px 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ff69b4; /* Fun pink border */
+    border-radius: 10px;
     outline: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(55, 53, 47);
-    caret-color: rgb(55, 53, 47);
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    caret-color: #ff69b4; /* Fun pink caret */
+    transition: all 0.3s ease;
+  }
+
+  .custom-input input:focus {
+    background-color: #e6e6fa; /* Light lavender on focus */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
   }
   
   .header-container{
