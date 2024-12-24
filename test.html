@@ -1,97 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wholesale Form 9</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .required:after {
-            content: " *";
-            color: red;
-        }
-        .phone-container {
-            display: flex;
-            align-items: center;
-        }
-        .phone-container select {
-            width: 30%;
-            margin-right: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift Form</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
 <body>
-
-<div class="container">
-    <h1>Wholesale form 9</h1>
-    <form>
-        <h2>Contact</h2>
-        <label class="required" for="first">First</label>
-        <input type="text" id="first" name="first" required>
-
-        <label class="required" for="last">Last</label>
-        <input type="text" id="last" name="last" required>
-
-        <label class="required" for="phone">Phone</label>
-        <div class="phone-container">
-            <select id="country-code" name="country-code">
-                <option value="+1">+1</option>
-                <!-- Add more country codes as needed -->
-            </select>
-            <input type="tel" id="phone" name="phone" placeholder="201-555-0123" required>
+  <div id="app">
+    <div class="header-container">
+      <h1 class="header">Contact</h1>
+    </div>
+    <div class="form-container">
+      <div class="custom-input">
+        <label for="firstName">First Name</label>
+        <input type="text" v-model="firstName" placeholder="First Name" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="lastName">Last Name</label>
+        <input type="text" v-model="lastName" placeholder="Last Name" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="email">Email</label>
+        <input type="email" v-model="email" placeholder="Email" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="instagram">Instagram</label>
+        <input type="text" v-model="instagram" placeholder="Instagram" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="tiktok">TikTok</label>
+        <input type="text" v-model="tiktok" placeholder="TikTok" autocomplete="off" />
+      </div>
+    </div>
+    <div class="product-container">
+      <h1 class="header">Choose products</h1>
+      <div class="dub-product-container">
+        <div v-for="(product, index) in products" :key="index" class="item-container">
+          <img :src="product.images[0].originalSrc" :alt="product.title"
+            style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
+          <div style="display:flex;flex-direction:column">
+            <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
+            <div v-if="product.variants.length > 1" class="variant-selector">
+              <label for="variant">Variant:</label>
+              <select v-model="product.selectedVariantId">
+                <option v-for="variant in product.variants" :value="variant.id">{{ variant.title }}</option>
+              </select>
+            </div>
+            <div class="quantity-selector">
+              <label for="quantity">Quantity:</label>
+              <input type="number" v-model.number="product.quantity" min="1" value="1">
+            </div>
+            <button @click="addToCart(product)"
+              style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Add
+              to Cart</button>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="shipping-container">
+      <h1 class="header">Shipping details</h1>
+      <div class="custom-input">
+        <label for="address">Address</label>
+        <input type="text" v-model="address" placeholder="Address" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="unitNo">Unit No</label>
+        <input type="text" v-model="unitNo" placeholder="Unit No" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="city">City</label>
+        <input type="text" v-model="city" placeholder="City" autocomplete="off" />
+      </div>
+      <div class="custom-input">
+        <label for="country">Country</label>
+        <input type="text" v-model="country" placeholder="Country" autocomplete="off" />
+      </div>
+    </div>
+  </div>
 
-        <label class="required" for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-
-        <h2>Company/Store</h2>
-        <label class="required" for="company-name">Company Name</label>
-        <input type="text" id="company-name" name="company-name" required>
-
-        <label class="required" for="website">Website Address</label>
-        <input type="url" id="website" name="website" required>
-
-        <label class="required" for="store-type">Type of Store/Business</label>
-        <select id="store-type" name="store-type" required>
-            <option value="">Please select</option>
-            <option value="retail">Retail</option>
-            <option value="wholesale">Wholesale</option>
-            <option value="online">Online</option>
-            <!-- Add more options as needed -->
-        </select>
-
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          firstName: '',
+          lastName: '',
+          email: '',
+          instagram: '',
+          tiktok: '',
+          products: [
+            // Example product data
+            {
+              title: 'Product 1',
+              images: [{ originalSrc: 'https://via.placeholder.com/100' }],
+              variants: [{ id: 1, title: 'Variant 1', price: 10.00 }],
+              selectedVariantId: 1,
+              quantity: 1
+            },
+            {
+              title: 'Product 2',
+              images: [{ originalSrc: 'https://via.placeholder.com/100' }],
+              variants: [{ id: 2, title: 'Variant 1', price: 20.00 }],
+              selectedVariantId: 2,
+              quantity: 1
+            }
+          ],
+          address: '',
+          unitNo: '',
+          city: '',
+          country: ''
+        }
+      },
+      methods: {
+        addToCart(product) {
+          console.log('Adding to cart:', product);
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
 </body>
 </html>
