@@ -1,80 +1,106 @@
+.custom-input {
+  margin-bottom: 16px;
+}
+
+.custom-input label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #ff69b4;
+  /* Fun pink color */
+}
+
+.custom-input input {
+  width: 220px;
+  height: 40px;
+  padding: 0px 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ff69b4;
+  /* Fun pink border */
+  border-radius: 10px;
+  outline: none;
+  background-color: #f0f8ff;
+  /* Light blue background */
+  color: #333;
+  caret-color: #ff69b4;
+  /* Fun pink caret */
+  transition: all 0.3s ease;
+}
+
+.custom-input input:focus {
+  background-color: #e6e6fa;
+  /* Light lavender on focus */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px
+}
+
+.header {
+  font-size: 20px;
+
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.item-container {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.dub-product-container {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.dub-product-container img {
+  margin-right: 15px;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+
 
 .custom-input {
-    margin-bottom: 16px;
-  }
-  
-  .custom-input label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #ff69b4; /* Fun pink color */
-  }
-  
-  .custom-input input {
-    width: 220px;
-    height: 40px;
-    padding: 0px 12px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border: 2px solid #ff69b4; /* Fun pink border */
-    border-radius: 10px;
-    outline: none;
-    background-color: #f0f8ff; /* Light blue background */
-    color: #333;
-    caret-color: #ff69b4; /* Fun pink caret */
-    transition: all 0.3s ease;
-  }
+  display: block;
+  height: 41px;
+  padding: 10px 12px;
+  color: #000;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  font-size: 13px;
+  position: relative;
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(50, 50, 93, .15), 0 1px 0 rgba(0, 0, 0, .02);
+  transition: box-shadow .15s ease;
+  outline: none;
+  background-image: none !important;
 
-  .custom-input input:focus {
-    background-color: #e6e6fa; /* Light lavender on focus */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-  }
-  
-  .header-container{
-    display: flex;
-    justify-content: center;
-    margin-top:20px
-  }
-  .header{
-    font-size:20px;
-  
-  }
-  .form-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .product-container{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top:5px;
-  }
-  
-  .item-container{
-    display:flex;
-    margin-top:10px;
-    margin-bottom:10px;
-  }
-  
-  .dub-product-container{
-    display: flex;
-    justify-content: start;
-    flex-direction: column;
-    margin-top:10px;
-  }
-  
-  .dub-product-container img{
-    margin-right: 15px;
-  }
-  
-  .product-title{
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 5px;
-  }
-
+}
