@@ -7,24 +7,17 @@
   margin-bottom: 8px;
   font-weight: bold;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  color: #ff69b4;
-  /* Fun pink color */
 }
 
 .custom-input input {
   width: 220px;
   height: 40px;
   padding: 0px 12px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid #ff69b4;
-  /* Fun pink border */
   border-radius: 10px;
   outline: none;
   background-color: #f0f8ff;
   /* Light blue background */
   color: #333;
-  caret-color: #ff69b4;
-  /* Fun pink caret */
   transition: all 0.3s ease;
 }
 
