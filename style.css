@@ -91,13 +91,11 @@
   height: 41px;
   padding: 10px 12px;
   color: #000;
-  background-color: #f1f1f1;
   border-radius: 2px;
   font-size: 13px;
   position: relative;
   flex: 1 1 auto;
   margin-bottom: 0;
-  width: 100%;
   box-shadow: 0 1px 3px rgba(50, 50, 93, .15), 0 1px 0 rgba(0, 0, 0, .02);
   transition: box-shadow .15s ease;
   outline: none;
