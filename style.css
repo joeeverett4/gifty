@@ -24,7 +24,6 @@
 .custom-input input:focus {
   background-color: #e6e6fa;
   /* Light lavender on focus */
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
   transform: scale(1.05);
 }
 
@@ -89,7 +88,6 @@
   position: relative;
   flex: 1 1 auto;
   margin-bottom: 0;
-  box-shadow: 0 1px 3px rgba(50, 50, 93, .15), 0 1px 0 rgba(0, 0, 0, .02);
   transition: box-shadow .15s ease;
   outline: none;
   background-image: none !important;
