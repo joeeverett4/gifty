@@ -15,15 +15,13 @@
   padding: 0px 12px;
   border-radius: 10px;
   outline: none;
-  background-color: #f0f8ff;
   /* Light blue background */
   color: #333;
   transition: all 0.3s ease;
+  border: solid black
 }
 
 .custom-input input:focus {
-  background-color: #e6e6fa;
-  /* Light lavender on focus */
   transform: scale(1.05);
 }
 
