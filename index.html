@@ -274,7 +274,8 @@
 </head>
 
 <body>
-  <div id="app" :style="{ backgroundColor: secondaryBgColor }">
+  <div id="app">
+    <div class = "wrapper" :style="{ backgroundColor: secondaryBgColor }">
     <div class="shop-container" v-if="heading" :style="{ backgroundColor: primaryBgColor }">
       <h2>{{ heading }}</h2>
     </div>
@@ -365,6 +366,7 @@
         </div>
         <div class="remove-icon" @click="removeFromCart(index)">🗑️</div>
       </div>
+    </div>
     </div>
   </div>
 
