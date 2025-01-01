@@ -233,7 +233,7 @@ function getUrlParams() {
 </head>
 
 <body>
-  <div id="app">
+  <div id="app" :style="{ backgroundColor: secondaryBgColor }">
     <div class="shop-container" v-if="heading" :style="{ backgroundColor: primaryBgColor }">
       <h2>{{ heading }}</h2> 
     </div>
