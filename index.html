@@ -456,6 +456,18 @@
           if (!this.email) {
             this.errors.email = 'Email is required';
           }
+          if (!this.address) {
+            this.errors.address = 'Address is required';
+          }
+          if (!this.city) {
+            this.errors.city = 'City is required';
+          }
+          if (!this.country) {
+            this.errors.country = 'Country is required';
+          }
+          if (!this.zipCode) {
+            this.errors.zipCode = 'Zip Code is required';
+          }
           return Object.keys(this.errors).length === 0;
         },
         async submitForm() {
