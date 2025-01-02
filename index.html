@@ -65,7 +65,8 @@
         buttonText,
         primaryBgColor,
         secondaryBgColor: mainBG, // Include secondaryBgColor in the return statement
-        heading
+        heading,
+        upToNumber // Include upToNumber in the return statement
       };
     }
   </script>
@@ -322,7 +323,7 @@
             </div>
             <div class="quantity-selector">
               <label for="quantity">Quantity:</label>
-              <input type="number" v-model.number="product.quantity" min="1" value="1">
+              <input type="number" v-model.number="product.quantity" :max="upToNumber" min="1" value="1">
             </div>
             <button @click="addToCart(product)"
               :style="{ backgroundColor: addToCartBg, color: addToCartBgTextColor, width: '150px', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }">Add
@@ -392,6 +393,7 @@
           city: '',
           country: '',
           zipCode: '',
+          upToNumber: '', // Variable to hold the upToNumber
           products: [], // Assuming products data will be populated
           cart: [], // Array to hold products added to the cart
           shopName: '', // Variable to hold the shop name
@@ -421,15 +423,25 @@
         this.addToCartBg = data.addToCartBg; // Set the add to cart button background color
         this.addToCartBgTextColor = data.addToCartBgTextColor; // Set the add to cart button text color
         this.heading = data.heading; // Set the heading
+        this.upToNumber = data.upToNumber; // Set the upToNumber
         this.shopId = shopId
       },
       methods: {
         addToCart(product) {
           const existingProductIndex = this.cart.findIndex(item => item.id === product.id && item.selectedVariantId === product.selectedVariantId);
           if (existingProductIndex !== -1) {
-            this.cart[existingProductIndex].quantity += product.quantity;
+            const newQuantity = this.cart[existingProductIndex].quantity + product.quantity;
+            if (newQuantity <= this.upToNumber) {
+              this.cart[existingProductIndex].quantity = newQuantity;
+            } else {
+              this.showErrorToast(`You can only add up to ${this.upToNumber} of each item.`);
+            }
           } else {
-            this.cart.push({ ...product, quantity: product.quantity });
+            if (product.quantity <= this.upToNumber) {
+              this.cart.push({ ...product, quantity: product.quantity });
+            } else {
+              this.showErrorToast(`You can only add up to ${this.upToNumber} of each item.`);
+            }
           }
           console.log('Product added to cart:', product);
           this.showToast();
