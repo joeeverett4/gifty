@@ -18,13 +18,14 @@
       const params = new URLSearchParams(window.location.search);
       return {
         campaignId: params.get('campaignId') || 'defaultCampaignId', // Default value if not present
-        linkId: params.get('linkId') || 'defaultLinkId' // Default value if not present
+        linkId: params.get('linkId') || 'defaultLinkId', // Default value if not present
+        shopId: params.get('shopId') || 'defaultShopId' // Default value if not present
       };
     }
 
     window.api = new Gadget();
 
-    async function fetchLinks(campaignId, linkId) {
+    async function fetchLinks(campaignId, linkId, shopId) {
 
       let email = await api.email.findFirst()
 
@@ -399,9 +400,9 @@
         }
       },
       async mounted() {
-        const { campaignId, linkId } = getUrlParams();
+        const { campaignId, linkId, shopId } = getUrlParams();
 
-        const data = await fetchLinks(campaignId, linkId); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
+        const data = await fetchLinks(campaignId, linkId, shopId); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
         this.products = data.products.map(product => ({ ...product, quantity: 1, selectedVariantId: product.variants[0].id })); // Initialize quantity to 1 and selectedVariantId to the first variant for each product
         this.shopName = data.shopName;
         this.linkId = linkId; // Set the linkId
@@ -447,7 +448,8 @@
             unit_no: this.unitNo,
             city: this.city,
             country: this.country,
-            zip_code: this.zipCode
+            zip_code: this.zipCode,
+            shopId: this.shopId
           });
 
           // console.log('Order created:', orderRecord);
