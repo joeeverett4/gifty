@@ -55,7 +55,9 @@
       const linkYO = await api.links.findOne(linkId);
 
       console.log("linkYo")
-      console.log(linkYO)
+      console.log(linkYO.cartlimit)
+
+      let cartlimit = linkYO.cartlimit
 
       let products = JSON.parse(linkYO.products);
 
@@ -67,7 +69,8 @@
         primaryBgColor,
         secondaryBgColor: mainBG, // Include secondaryBgColor in the return statement
         heading,
-        upToNumber // Include upToNumber in the return statement
+        upToNumber,
+        cartlimit
       };
     }
   </script>
@@ -427,6 +430,7 @@
         this.addToCartBgTextColor = data.addToCartBgTextColor; // Set the add to cart button text color
         this.heading = data.heading; // Set the heading
         this.upToNumber = data.upToNumber; // Set the upToNumber
+        this.cartPriceLimit = data.cartlimit; // Set the cart price limit
         this.shopId = shopId
         console.log("lol")
       },
