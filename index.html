@@ -357,6 +357,7 @@
       </button>
     </div>
     <div id="toast" class="toast">Product added to cart!</div>
+    <div id="error-toast" class="toast" style="background-color: red;"></div>
     <div class="cart-icon" :class="{ show: cart.length > 0 }" @click="toggleCartOverlay">
       🛒
     </div>
@@ -438,6 +439,12 @@
           toast.className = "toast show";
           setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
         },
+        showErrorToast(message) {
+          const errorToast = document.getElementById("error-toast");
+          errorToast.textContent = message;
+          errorToast.className = "toast show";
+          setTimeout(() => { errorToast.className = errorToast.className.replace("show", ""); }, 3000);
+        },
         toggleCartOverlay() {
           this.isCartOverlayVisible = !this.isCartOverlayVisible;
         },
@@ -453,6 +460,8 @@
         },
         async submitForm() {
           if (!this.validateForm()) {
+            const errorMessages = Object.values(this.errors).join(', ');
+            this.showErrorToast(`Please fill in all required fields: ${errorMessages}`);
             return;
           }
           this.isSubmitting = true; // Set loading state to true
