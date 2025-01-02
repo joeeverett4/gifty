@@ -27,7 +27,7 @@
 
     async function fetchLinks(campaignId, linkId, shopId) {
 
-      let email = await api.email.findFirst()
+      let email = await api.formDetails.findFirst()
 
       let buttonText = email.buttonText
 
