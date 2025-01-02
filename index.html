@@ -411,14 +411,15 @@
         const { campaignId, linkId, shopId } = getUrlParams();
 
         const data = await fetchLinks(campaignId, linkId, shopId); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
+        console.log(data)
         this.products = data.products.map(product => ({ ...product, quantity: 1, selectedVariantId: product.variants[0].id })); // Initialize quantity to 1 and selectedVariantId to the first variant for each product
         this.shopName = data.shopName;
         this.linkId = linkId; // Set the linkId
         this.buttonText = data.buttonText; // Set the button text
         this.primaryBgColor = data.primaryBgColor; // Set the background color for shop-container
         this.secondaryBgColor = data.secondaryBgColor; // Set the background color for shop-container
-        this.addToCartBg = data.addToBgColor
-        this.addToCartBgTextColor = data.addToBgColorText
+        this.addToCartBg = data.addToCartBg; // Set the add to cart button background color
+        this.addToCartBgTextColor = data.addToCartBgTextColor; // Set the add to cart button text color
         this.heading = data.heading; // Set the heading
         this.shopId = shopId
       },
