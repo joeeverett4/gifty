@@ -29,6 +29,9 @@
 
       let email = await api.formDetails.findFirst()
 
+      console.log("EMAIL")
+      console.log(email)
+
       let buttonText = email.buttonText
 
       let primaryBgColor = email.primaryBgColor
@@ -54,8 +57,7 @@
 
       const linkYO = await api.links.findOne(linkId);
 
-      console.log("linkYo")
-      console.log(linkYO.cartlimit)
+    
 
       let cartlimit = linkYO.cartlimit
 
@@ -418,8 +420,7 @@
         const { campaignId, linkId, shopId } = getUrlParams();
 
         const data = await fetchLinks(campaignId, linkId, shopId); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
-        console.log(data)
-        console.log(data.addToBgColor)
+     
         this.products = data.products.map(product => ({ ...product, quantity: 1, selectedVariantId: product.variants[0].id })); // Initialize quantity to 1 and selectedVariantId to the first variant for each product
         this.shopName = data.shopName;
         this.linkId = linkId; // Set the linkId
@@ -432,7 +433,7 @@
         this.upToNumber = data.upToNumber; // Set the upToNumber
         this.cartPriceLimit = data.cartlimit; // Set the cart price limit
         this.shopId = shopId
-        console.log("lol")
+ 
       },
       methods: {
         addToCart(product) {
@@ -530,8 +531,7 @@
             shopId: this.shopId
           });
 
-          // console.log('Order created:', orderRecord);
-          console.log(this.cart)
+       
           setTimeout(() => {
             window.location.href = 'complete.html'; // Navigate to contact.html
           }, 5000); // 5 seconds timeout
