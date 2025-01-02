@@ -54,6 +54,9 @@
 
       const linkYO = await api.links.findOne(linkId);
 
+      console.log("linkYo")
+      console.log(linkYO)
+
       let products = JSON.parse(linkYO.products);
 
 
