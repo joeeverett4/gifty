@@ -404,7 +404,8 @@
           heading: '', // Variable to hold the heading
           errors: {}, // Object to hold validation errors
           addToCartBg: '#4CAF50', // Default background color for add to cart button
-          addToCartBgTextColor: '#FFFFFF' // Default text color for add to cart button
+          addToCartBgTextColor: '#FFFFFF', // Default text color for add to cart button
+          cartPriceLimit: 500 // Default cart price limit
         }
       },
       async mounted() {
@@ -429,6 +430,15 @@
       methods: {
         addToCart(product) {
           const existingProductIndex = this.cart.findIndex(item => item.id === product.id && item.selectedVariantId === product.selectedVariantId);
+          const productTotalPrice = product.quantity * product.variants.find(variant => variant.id === product.selectedVariantId).price;
+          const currentCartTotal = this.cart.reduce((total, item) => total + (item.quantity * item.variants.find(variant => variant.id === item.selectedVariantId).price), 0);
+          const newCartTotal = currentCartTotal + productTotalPrice;
+
+          if (newCartTotal > this.cartPriceLimit) {
+            this.showErrorToast(`You cannot add items to the cart if the total value exceeds $${this.cartPriceLimit}.`);
+            return;
+          }
+
           if (existingProductIndex !== -1) {
             const newQuantity = this.cart[existingProductIndex].quantity + product.quantity;
             if (newQuantity <= this.upToNumber) {
