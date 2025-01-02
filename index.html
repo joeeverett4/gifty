@@ -468,6 +468,9 @@
           if (!this.zipCode) {
             this.errors.zipCode = 'Zip Code is required';
           }
+          if (this.cart.length < 1) {
+            this.errors.cart = 'At least one item must be added to the cart';
+          }
           return Object.keys(this.errors).length === 0;
         },
         async submitForm() {
