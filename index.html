@@ -294,8 +294,8 @@
 <body>
   <div id="app">
     <div class = "wrapper" :style="{ backgroundColor: secondaryBgColor }">
-    <div class="shop-container" v-if="heading" :style="{ backgroundColor: primaryBgColor }">
-      <h2>{{ heading }}</h2>
+    <div class="shop-container" v-if="shopId" :style="{ backgroundColor: primaryBgColor }">
+      <h2>{{ shopId }}</h2>
     </div>
     <div class="header-container" :style="{ backgroundColor: secondaryBgColor }">
       <h1 class="header">Contact details</h1>
@@ -419,7 +419,8 @@
           errors: {}, // Object to hold validation errors
           addToCartBg: '#4CAF50', // Default background color for add to cart button
           addToCartBgTextColor: '#FFFFFF', // Default text color for add to cart button
-          cartPriceLimit: 20 // Default cart price limit
+          cartPriceLimit: 20, // Default cart price limit
+          shopId: '' // Variable to hold the shopId
         }
       },
       async mounted() {
@@ -440,7 +441,7 @@
         this.heading = data.heading; // Set the heading
         this.upToNumber = data.upToNumber; // Set the upToNumber
         this.cartPriceLimit = data.cartlimit; // Set the cart price limit
-        this.shopId = shopId
+        this.shopId = shopId; // Set the shopId
  
       },
       methods: {
@@ -553,7 +554,7 @@
     (async function() {
       const { campaignId, linkId, shopId } = getUrlParams();
       const data = await fetchLinks(campaignId, linkId, shopId);
-      document.querySelector('.shop-container h2').textContent = data.heading;
+      document.querySelector('.shop-container h2').textContent = shopId;
     })();
   </script>
 </body>
