@@ -19,13 +19,14 @@
       return {
         campaignId: params.get('campaignId') || 'defaultCampaignId', // Default value if not present
         linkId: params.get('linkId') || 'defaultLinkId', // Default value if not present
-        shopId: params.get('shopId') || 'defaultShopId' // Default value if not present
+        shopId: params.get('shopId') || 'defaultShopId', // Default value if not present
+        shopDomain: params.get('shopDomain') || 'defaultShopDomain' // Default value if not present
       };
     }
 
     window.api = new Gadget();
 
-    async function fetchLinks(campaignId, linkId, shopId) {
+    async function fetchLinks(campaignId, linkId, shopId, shopDomain) {
 
       let email = await api.formDetails.findFirst()
 
@@ -295,7 +296,7 @@
   <div id="app">
     <div class = "wrapper" :style="{ backgroundColor: secondaryBgColor }">
     <div class="shop-container" v-if="shopId" :style="{ backgroundColor: primaryBgColor }">
-      <h2>{{ shopId }}</h2>
+      <h2>{{ shopDomain }} Gift form</h2>
     </div>
     <div class="header-container" :style="{ backgroundColor: secondaryBgColor }">
       <h1 class="header">Contact details</h1>
@@ -420,15 +421,17 @@
           addToCartBg: '#4CAF50', // Default background color for add to cart button
           addToCartBgTextColor: '#FFFFFF', // Default text color for add to cart button
           cartPriceLimit: 20, // Default cart price limit
-          shopId: '' // Variable to hold the shopId
+          shopId: '', // Variable to hold the shopId
+          shopDomain: '' // Variable to hold the shopDomain
         }
       },
       async mounted() {
-        const { campaignId, linkId, shopId } = getUrlParams();
+        const { campaignId, linkId, shopId, shopDomain } = getUrlParams();
 
         this.shopId = shopId;
+        this.shopDomain = shopDomain;
 
-        const data = await fetchLinks(campaignId, linkId, shopId); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
+        const data = await fetchLinks(campaignId, linkId, shopId, shopDomain); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
      
         console.log("DATA")
         console.log(data)
@@ -539,7 +542,8 @@
             city: this.city,
             country: this.country,
             zip_code: this.zipCode,
-            shopId: this.shopId
+            shopId: this.shopId,
+            shopDomain: this.shopDomain
           });
 
        
@@ -554,9 +558,10 @@
   <script>
     // Fetch heading as soon as possible
     (async function() {
-      const { campaignId, linkId, shopId } = getUrlParams();
+      const { campaignId, linkId, shopId, shopDomain } = getUrlParams();
       this.shopId = shopId;
-      const data = await fetchLinks(campaignId, linkId, shopId);
+      this.shopDomain = shopDomain;
+      const data = await fetchLinks(campaignId, linkId, shopId, shopDomain);
       document.querySelector('.shop-container h2').textContent = shopId;
     })();
   </script>
