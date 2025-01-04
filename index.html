@@ -426,6 +426,8 @@
       async mounted() {
         const { campaignId, linkId, shopId } = getUrlParams();
 
+        this.shopId = shopId;
+
         const data = await fetchLinks(campaignId, linkId, shopId); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
      
         console.log("DATA")
@@ -553,6 +555,7 @@
     // Fetch heading as soon as possible
     (async function() {
       const { campaignId, linkId, shopId } = getUrlParams();
+      this.shopId = shopId;
       const data = await fetchLinks(campaignId, linkId, shopId);
       document.querySelector('.shop-container h2').textContent = shopId;
     })();
