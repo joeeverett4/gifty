@@ -555,16 +555,7 @@
     });
     app.mount('#app');
   </script>
-  <script>
-    // Fetch heading as soon as possible
-    (async function() {
-      const { campaignId, linkId, shopId, shopDomain } = getUrlParams();
-      this.shopId = shopId;
-      this.shopDomain = shopDomain;
-      const data = await fetchLinks(campaignId, linkId, shopId, shopDomain);
-      document.querySelector('.shop-container h2').textContent = shopId;
-    })();
-  </script>
+
 </body>
 
 </html>
