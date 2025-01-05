@@ -367,7 +367,7 @@
       <button @click="submitForm" :disabled="isSubmitting"
         :style="{ backgroundColor: addToCartBg, color: addToCartBgTextColor, padding: '10px 20px', border: 'none', borderRadius: '5px', width: '150px', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }">
         <span v-if="isSubmitting" id="loading"></span>
-        <span v-else>{{ buttonText }}</span>
+        <span v-else>{{ buttonText }} Submit</span>
       </button>
     </div>
     <div id="toast" class="toast">Product added to cart!</div>
