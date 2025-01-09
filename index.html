@@ -248,13 +248,11 @@
       border-radius: 50px;
     }
 
-    button.fa-solid.fa-plus {
+    i.fa-solid.fa-plus {
       border: 1px solid white;
       padding: 5px;
       background-color: white;
       border-radius: 50px;
-      font-size: 20px;
-      cursor: pointer;
     }
 
     .container-3 {
@@ -446,7 +444,7 @@
                   <div class="icon-2">
                     <i class="fa-solid fa-trash" @click="removeFromCart(index)"></i>
                     <h4>{{ product.quantity }}X<h4>
-                    <button @click="addToCart(product)" class="fa-solid fa-plus"></button>
+                    <i class="fa-solid fa-plus" @click="addToCart(product)"></i>
                   </div>
                 </div>
               </div>
