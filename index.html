@@ -337,7 +337,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       padding: 20px;
-      display: none;
+      display: block; /* Make the cart overlay visible by default */
       z-index: 2;
     }
 
@@ -541,28 +541,23 @@
         </div>
       </div>
     </div>
+    <div class="cart-overlay">
+      <h2>Cart</h2>
+      <div v-for="(item, index) in cart" :key="index" class="cart-item">
+        <img :src="item.images[0].originalSrc" :alt="item.title">
+        <div class="cart-item-details">
+          <div class="cart-item-title">{{ item.title }}</div>
+          <div class="cart-item-quantity">{{ item.quantity }} x ${{ item.variants.find(variant => variant.id === item.selectedVariantId).price }}</div>
+        </div>
+        <button @click="removeFromCart(index)">Remove</button>
+      </div>
+    </div>
   </div>
 
   <div id="toast" class="toast">Product added to cart</div>
   <div id="error-toast" class="toast"></div>
 
-  <div v-if="isCartOverlayVisible" class="cart-overlay">
-    <div class="cart-container">
-      <h2>Your Cart</h2>
-      <div v-for="(item, index) in cart" :key="index" class="cart-item">
-        <div class="cart-item-details">
-          <img :src="item.images[0].originalSrc" :alt="item.title">
-          <div>
-            <h3>{{ item.title }}</h3>
-            <p>Quantity: {{ item.quantity }}</p>
-            <p>Price: ${{ item.variants.find(variant => variant.id === item.selectedVariantId).price }}</p>
-          </div>
-        </div>
-        <button @click="removeFromCart(index)">Remove</button>
-      </div>
-      <button @click="toggleCartOverlay">Close Cart</button>
-    </div>
-  </div>
+
 
   <script>
     // Create a new Vue instance
@@ -584,7 +579,7 @@
           products: [], // Assuming products data will be populated
           cart: [], // Array to hold products added to the cart
           shopName: '', // Variable to hold the shop name
-          isCartOverlayVisible: false, // Variable to control the visibility of the cart overlay
+          isCartOverlayVisible: true, // Variable to control the visibility of the cart overlay, set to true by default
           linkId: '', // Variable to hold the linkId
           isSubmitting: false, // Variable to control the loading state of the submit button
           buttonText: 'Submit', // Default button text
