@@ -315,6 +315,62 @@
       border-radius: 5px;
     }
 
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 24px;
+      display: none;
+    }
+
+    .cart-icon.show {
+      display: block;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      display: none;
+      z-index: 2;
+    }
+
+    .cart-overlay.show {
+      display: block;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+
+    .cart-item-title {
+      font-weight: 600;
+    }
+
+    .cart-item-quantity {
+      font-size: 14px;
+      color: #666;
+    }
+
     @media screen and (min-width: 768px) and (max-width: 1024px) {}
 
     @media screen and (min-width: 320px) and (max-width: 480px) {
@@ -593,7 +649,8 @@
               this.showErrorToast(`You can only add up to ${this.upToNumber} of each item.`);
             }
           }
-          console.log('Product added to cart:', product);
+          console.log('Product added to cartz:', product);
+          console.log(this.cart)
           this.showToast();
           this.isCartOverlayVisible = true; // Show the cart overlay when an item is added to the cart
         },
