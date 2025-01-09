@@ -443,38 +443,37 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="container-3">
-        <div class="shipping-heading">
-          <h2>Shipping Details</h2>
-        </div>
-        <div class="new-details">
-          <div class="form-1">
-            <form>
-              <div class="form-2">
-                <input type="text" id="address" v-model="address" placeholder="Address" autocomplete="off" />
-                <input type="text" id="unit-no" v-model="unitNo" placeholder="Unit No" autocomplete="off" />
-                <div class="new-column">
-                  <input type="text" id="city" v-model="city" placeholder="City" autocomplete="off" />
-                  <select v-model="country" id="country">
-                    <option value="country">Country</option>
-                    <option value="india">India</option>
-                    <option value="germany">Germany</option>
-                    <option value="london">London</option>
-                    <option value="cananda">Canada</option>
-                  </select>
-                </div>
-                <input type="text" id="zip-code" v-model="zipCode" placeholder="Zip Code" autocomplete="off" />
-              </div>
-            </form>
+        <div class="container-3">
+          <div class="shipping-heading">
+            <h2>Shipping Details</h2>
           </div>
-        </div>
-        <div class="form-button">
-          <button @click="submitForm" :disabled="isSubmitting">
-            <span v-if="isSubmitting" id="loading"></span>
-            <span v-else>{{ buttonText }} Submit</span>
-          </button>
+          <div class="new-details">
+            <div class="form-1">
+              <form>
+                <div class="form-2">
+                  <input type="text" id="address" v-model="address" placeholder="Address" autocomplete="off" />
+                  <input type="text" id="unit-no" v-model="unitNo" placeholder="Unit No" autocomplete="off" />
+                  <div class="new-column">
+                    <input type="text" id="city" v-model="city" placeholder="City" autocomplete="off" />
+                    <select v-model="country" id="country">
+                      <option value="country">Country</option>
+                      <option value="india">India</option>
+                      <option value="germany">Germany</option>
+                      <option value="london">London</option>
+                      <option value="cananda">Canada</option>
+                    </select>
+                  </div>
+                  <input type="text" id="zip-code" v-model="zipCode" placeholder="Zip Code" autocomplete="off" />
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="form-button">
+            <button @click="submitForm" :disabled="isSubmitting">
+              <span v-if="isSubmitting" id="loading"></span>
+              <span v-else>{{ buttonText }} Submit</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
