@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<style>
+.form-container{
+	width: 100%;
+	margin:0 auto;
+}
+.form-details {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f9f9f9;
+	align-items: center;
+	padding: 20px 0px;
+}
+.head-1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #80808038;
+}
+.head-1 h1{
+	font-size:23px;
+	margin: 0px;
+	padding: 20px 0px;
+}
+.form-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	gap: 10px;
+}
+.contact h2 {
+    text-align: left;
+    max-width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input#name, #lastname, #email, #instagram, #tik-tok {
+    width: 300px;
+	padding: 10px 5px;
+    border-radius: 5px;
+	border-width: thin;
+    border: 1px solid #0c0a0a5e;
+	font-size: 14px;
+	color: grey;
+}
+form {
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.product {
+    width: 100%;
+}
+.product-details {
+    border-top: 1px solid #80808038;
+	border-bottom: 1px solid #80808038;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.product-heading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.product-heading h2 {
+    text-align: left;
+    width: 350px;
+    display: flex;
+    align-items: center;
+}
+.container-2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.product-image {
+    display: flex;
+    padding: 20px 0px;
+    width: 400px;
+    border-bottom: 1px solid #80808038;
+    align-items: center;
+    justify-content:  space-between;
+}
+.first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	gap: 10px;
+}
+.image img {
+    width: 70px;
+	box-shadow: 0 2px 17px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.icon-1 {
+    padding: 0px 20px;
+    font-size: 20px;
+}
+.icon-2 h4 {
+    margin: 0px;
+}
+.icon-2 {
+    display: flex;
+    align-items: center;
+    border: 1px solid #80808042;
+    gap: 9px;
+    background-color: #80808042;
+    border-radius: 19px;
+}
+
+.text h3 { 
+	font-weight: normal;
+    margin: 0px;
+}
+.text p {
+	color: #808080;
+    margin: 0px;
+}
+.second {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+i.fa-solid.fa-trash {
+    border: 1px solid white;
+    padding: 5px;
+    background-color: white;
+    border-radius: 50px;
+}
+i.fa-solid.fa-plus {
+	 border: 1px solid white;
+    padding: 5px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.container-3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.shipping-heading {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+.form-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.new-details {
+    width: 300px;
+}
+.new-column {
+    display: flex;
+	gap:10px;
+}
+input#address, #unit-no, #zip-code {
+    width: 300px;
+    padding: 10px 5px;
+    border-radius: 5px;
+    border-width: thin;
+    border: 1px solid #0c0a0a5e;
+    font-size: 14px;
+    color: grey;
+}
+ input#city, #country{
+	 width: 140px;
+	  padding: 10px 5px;
+    border-radius: 5px;
+    border-width: thin;
+    border: 1px solid #0c0a0a5e;
+    font-size: 14px;
+    color: grey;
+ }
+form {
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 17px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.form-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	padding: 20px 0px;
+}
+button {
+    width: 300px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+	.form-details {
+    width: 100%;
+}
+.contact {
+    width: 100%;
+}
+input#name, #lastname, #email, #instagram, #tik-tok {
+    width: 210px;
+}
+.product-image {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px 1px;
+    gap: 20px;
+}
+
+input#address, #unit-no, #zip-code {
+    width: 210px;
+}
+input#city, #country {
+    width: 94px;
+}
+.product-heading h2 {
+    width: 223px;
+}
+.shipping-heading {
+    width: 250px;
+}
+.product-heading {
+    width: 100%;
+    max-width: 266px;
+}
+.contact h2 {
+	width: 100%;
+    max-width: 200px;
+}
+.second {
+    display: flex;
+    flex-direction: row;
+	padding: 0px 5px;
+}
+.first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	padding: 0px 23px;
+}
+.text h3 {
+    margin: 0px;
+}
+button {
+    width: 220px;
+}
+}
+</style>
+<body>
+<div class="form-container">
+  <div class="form-details">
+	<div class="head-1">
+		<h1>KOOT GIFT FORM</h1>
+	</div>
+		<div class="contact">
+			<div class="head-2">
+				<h2>Contact Details</h2>
+			</div>
+				<div class="contact-form">
+					<div class="form-1">
+						<form>
+							<div class="form-1">
+							<input type="name" id="name" value="First Name" name="name">
+							<input type="lastname" id="name" value="Last Name" name="name">
+							<input type="email" id="email" value="Email" name="email">
+							<input type="instagram" id="instagram" value="Instagram" name="instagram">
+							<input type="tik-tok" id="tik-tok" value="Tik-tok" name="tik-tok">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>  
+  
+  
+  <div class="container-2">
+		<div class="product">
+			<div class="product-heading">
+				<h2>Choose Product</h2>
+			</div>
+				<div class="product-details">
+					<div class="product-image">
+						<div class="first">
+							<div class="image">
+								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStJ_FeaAc7UsRquOgIXVyUZTbU73fMua_59Q&s" alt="barca-beer">
+							</div>
+								<div class="text">
+									<h3>Barca Beer<h3>
+									<p>$8.55<p>
+								</div>
+							</div>
+			
+				<div class="second">
+					<div class="icon-1">
+						<i class="fa-solid fa-cart-shopping"></i>
+					</div>
+						<div class="icon-2">
+							<i class="fa-solid fa-trash"></i>
+							<h4>1X<h4>
+							<i class="fa-solid fa-plus"></i>
+						</div>
+					</div>
+				</div>
+		
+		
+		<div class="product-image">
+			<div class="first">
+				<div class="image">
+					<img src="https://media.istockphoto.com/id/661456550/photo/potted-seedlings-growing-in-biodegradable-peat-moss.jpg?s=612x612&w=0&k=20&c=kFDYRXNeWXEHag7N2IBuhOx_zLtIXNeVbyHaxCIeZIU=" alt="barca-beer">
+				</div>
+					<div class="text">
+						<h3>Biodegradable Cardboard Pots<h3>
+						<p>$8.55<p>
+					</div>
+				</div>
+			
+			<div class="second">
+				<div class="icon-1">
+					<i class="fa-solid fa-cart-shopping"></i>
+				</div>
+					<div class="icon-2">
+						<i class="fa-solid fa-trash"></i>
+						<h4>1X<h4>
+						<i class="fa-solid fa-plus"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </div>
+  
+  
+	<div class="container-3">
+		<div class="shipping-heading">
+			<h2>Shipping  Details</h2>
+		</div>
+			<div class="new-details">
+				<div class="form-1">
+					<form>
+						<div class="form-2">
+						<input type="address" id="address" value="Address" name="address">
+						<input type="unit-no" id="unit-no" value="Unit No" name="unit-no">
+						<div class="new-column">
+						<input type="city" id="city" value="City" name="city">
+						<select name="Country" id="country">
+							  <option value="country">Country</option>
+							  <option value="india">India</option>
+							  <option value="germany">Germany</option>
+							  <option value="london">London</option>
+							  <option value="cananda">Cananda</option>
+						</select>
+				</div>
+					<input type="zip-code" id="zip-code" value="Zip Code" name="zip-code">
+					</form>
+				</div>
+			</div>
+		</div>
+			<div class="form-button">
+				<a href="#"><button type="submit" form="form1" value="Submit">SUBMIT</button></a>
+			</div>	
+		</div>
+	</div>
+</div>
+</body>
+</html>

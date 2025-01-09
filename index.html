@@ -8,6 +8,7 @@
   <!-- Include Vue.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
   <!-- Link to style.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <!-- Include Gadget client script -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -84,209 +85,304 @@
     }
   </script>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      /* Use Poppins font */
+    .form-container {
+      width: 100%;
+      margin: 0 auto;
     }
 
-    .submit-container {
+    .form-details {
+      max-width: 500px;
+      margin: 0 auto;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 5px;
-    }
-
-    .shipping-container {
-      display: flex;
-      align-items: center;
       justify-content: center;
       flex-direction: column;
-      margin-top: 5px;
+      background-color: #f9f9f9;
+      align-items: center;
+      padding: 20px 0px;
     }
 
-    .toast {
-      visibility: hidden;
-      min-width: 250px;
-      margin-left: -125px;
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      border-radius: 2px;
-      padding: 14px 32px;
-      position: fixed;
-      z-index: 1;
-      left: 50%;
-      bottom: 30px;
-      font-size: 17px;
-    }
-
-    .toast.show {
-      visibility: visible;
-      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-      animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-
-    .shop-container {
+    .head-1 {
+      width: 100%;
       display: flex;
-      padding: 25px;
-      background: #fafafa;
       justify-content: center;
-      height: 65px;
+      border-bottom: 1px solid #80808038;
     }
 
-    .quantity-selector {
+    .head-1 h1 {
+      font-size: 23px;
+      margin: 0px;
+      padding: 20px 0px;
+    }
+
+    .form-1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact h2 {
+      text-align: left;
+      max-width: 160px;
       display: flex;
       align-items: center;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      justify-content: center;
     }
 
-    .quantity-selector label {
-      margin-right: 10px;
-      font-weight: 600;
-      display: none;
-    }
-
-    .quantity-selector input {
-      width: 60px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      text-align: center;
-      font-size: 16px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    @-webkit-keyframes fadein {
-      from {
-        bottom: 0;
-        opacity: 0;
-      }
-
-      to {
-        bottom: 30px;
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadein {
-      from {
-        bottom: 0;
-        opacity: 0;
-      }
-
-      to {
-        bottom: 30px;
-        opacity: 1;
-      }
-    }
-
-    @-webkit-keyframes fadeout {
-      from {
-        bottom: 30px;
-        opacity: 1;
-      }
-
-      to {
-        bottom: 0;
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeout {
-      from {
-        bottom: 30px;
-        opacity: 1;
-      }
-
-      to {
-        bottom: 0;
-        opacity: 0;
-      }
-    }
-
-    .cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      font-size: 24px;
-      display: none;
-    }
-
-    .cart-icon.show {
-      display: block;
-    }
-
-    .cart-overlay {
-      position: fixed;
-      top: 60px;
-      right: 20px;
+    input#name,
+    #lastname,
+    #email,
+    #instagram,
+    #tik-tok {
       width: 300px;
-      background: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      padding: 20px;
-      display: none;
-      z-index: 2;
-    }
-
-    .cart-overlay.show {
-      display: block;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .cart-item img {
-      width: 50px;
-      height: 50px;
-      border-radius: 8px;
-    }
-
-    .cart-item-details {
-      flex-grow: 1;
-      margin-left: 10px;
-    }
-
-    .cart-item-title {
-      font-weight: 600;
-    }
-
-    .cart-item-quantity {
+      padding: 10px 5px;
+      border-radius: 5px;
+      border-width: thin;
+      border: 1px solid #0c0a0a5e;
       font-size: 14px;
-      color: #666;
+      color: grey;
     }
 
-    .remove-icon {
-      cursor: pointer;
+    .product {
+      width: 100%;
+    }
+
+    .product-details {
+      border-top: 1px solid #80808038;
+      border-bottom: 1px solid #80808038;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-heading {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-heading h2 {
+      text-align: left;
+      width: 350px;
+      display: flex;
+      align-items: center;
+    }
+
+    .container-2 {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .product-image {
+      display: flex;
+      padding: 20px 0px;
+      width: 400px;
+      border-bottom: 1px solid #80808038;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .first {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .image img {
+      width: 70px;
+      box-shadow: 0 2px 17px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .icon-1 {
+      padding: 0px 20px;
       font-size: 20px;
-      color: red;
     }
 
-    #loading {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border: 3px solid rgba(255, 255, 255, .3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
-      -webkit-animation: spin 1s ease-in-out infinite;
+    .icon-2 h4 {
+      margin: 0px;
     }
 
-    @keyframes spin {
-      to {
-        -webkit-transform: rotate(360deg);
+    .icon-2 {
+      display: flex;
+      align-items: center;
+      border: 1px solid #80808042;
+      gap: 9px;
+      background-color: #80808042;
+      border-radius: 19px;
+    }
+
+    .text h3 {
+      font-weight: normal;
+      margin: 0px;
+    }
+
+    .text p {
+      color: #808080;
+      margin: 0px;
+    }
+
+    .second {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
+    }
+
+    i.fa-solid.fa-trash {
+      border: 1px solid white;
+      padding: 5px;
+      background-color: white;
+      border-radius: 50px;
+    }
+
+    i.fa-solid.fa-plus {
+      border: 1px solid white;
+      padding: 5px;
+      background-color: white;
+      border-radius: 50px;
+    }
+
+    .container-3 {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .shipping-heading {
+      width: 70%;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .new-details {
+      width: 300px;
+    }
+
+    .new-column {
+      display: flex;
+      gap: 10px;
+    }
+
+    input#address,
+    #unit-no,
+    #zip-code {
+      width: 300px;
+      padding: 10px 5px;
+      border-radius: 5px;
+      border-width: thin;
+      border: 1px solid #0c0a0a5e;
+      font-size: 14px;
+      color: grey;
+    }
+
+    input#city,
+    #country {
+      width: 140px;
+      padding: 10px 5px;
+      border-radius: 5px;
+      border-width: thin;
+      border: 1px solid #0c0a0a5e;
+      font-size: 14px;
+      color: grey;
+    }
+
+    button {
+      width: 220px;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {}
+
+    @media screen and (min-width: 320px) and (max-width: 480px) {
+      .form-details {
+        width: 100%;
       }
-    }
 
-    @-webkit-keyframes spin {
-      to {
-        -webkit-transform: rotate(360deg);
+      .contact {
+        width: 100%;
+      }
+
+      input#name,
+      #lastname,
+      #email,
+      #instagram,
+      #tik-tok {
+        width: 210px;
+      }
+
+      .product-image {
+        display: flex;
+        width: 100%;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 1px;
+        gap: 20px;
+      }
+
+      input#address,
+      #unit-no,
+      #zip-code {
+        width: 210px;
+      }
+
+      input#city,
+      #country {
+        width: 94px;
+      }
+
+      .product-heading h2 {
+        width: 223px;
+      }
+
+      .shipping-heading {
+        width: 250px;
+      }
+
+      .product-heading {
+        width: 100%;
+        max-width: 266px;
+      }
+
+      .contact h2 {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .second {
+        display: flex;
+        flex-direction: row;
+        padding: 0px 5px;
+      }
+
+      .first {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 23px;
+      }
+
+      .text h3 {
+        margin: 0px;
+      }
+
+      button {
+        width: 220px;
       }
     }
   </style>
@@ -294,99 +390,94 @@
 
 <body>
   <div id="app">
-    <div class = "wrapper" :style="{ backgroundColor: secondaryBgColor }">
-    <div class="shop-container" v-if="shopId" :style="{ backgroundColor: primaryBgColor }">
-      <h2>{{ shopDomain }} Gift form</h2>
-    </div>
-    <div class="header-container" :style="{ backgroundColor: secondaryBgColor }">
-      <h1 class="header">Contact details</h1>
-    </div>
     <div class="form-container">
-
-      <div class="custom-input">
-        <input type="text" v-model="firstName" placeholder="First Name" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="lastName" placeholder="Last Name" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="email" v-model="email" placeholder="Email" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="instagram" placeholder="Instagram" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="tiktok" placeholder="TikTok" autocomplete="off" />
-      </div>
-
-    </div>
-    <div class="product-container">
-      <h1 class="header">Choose products</h1>
-      <div class="dub-product-container">
-        <div v-for="(product, index) in products" :key="index" class="item-container">
-          <img :src="product.images[0].originalSrc" :alt="product.title"
-            style="width: 100px; height: 100px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" />
-          <div style="display:flex;flex-direction:column">
-            <div class="product-title">{{ product.title }} - ${{ product.variants[0].price }}</div>
-            <div v-if="product.variants.length > 1" class="variant-selector">
-              <label for="variant">Variant:</label>
-              <select v-model="product.selectedVariantId">
-                <option v-for="variant in product.variants" :value="variant.id">{{ variant.title }}</option>
-              </select>
+      <div class="form-details">
+        <div class="head-1">
+          <h1>{{ shopDomain }} Gift form</h1>
+        </div>
+        <div class="contact">
+          <div class="head-2">
+            <h2>Contact Details</h2>
+          </div>
+          <div class="contact-form">
+            <div class="form-1">
+              <form>
+                <div class="form-1">
+                  <input type="text" id="name" v-model="firstName" placeholder="First Name" autocomplete="off" />
+                  <input type="text" id="lastname" v-model="lastName" placeholder="Last Name" autocomplete="off" />
+                  <input type="email" id="email" v-model="email" placeholder="Email" autocomplete="off" />
+                  <input type="text" id="instagram" v-model="instagram" placeholder="Instagram" autocomplete="off" />
+                  <input type="text" id="tik-tok" v-model="tiktok" placeholder="TikTok" autocomplete="off" />
+                </div>
+              </form>
             </div>
-            <div class="quantity-selector">
-              <label for="quantity">Quantity:</label>
-              <input type="number" v-model.number="product.quantity" :max="upToNumber" min="1" value="1">
-            </div>
-            <button @click="addToCart(product)"
-              :style="{ backgroundColor: addToCartBg, color: addToCartBgTextColor, width: '150px', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }">Add
-              to Cart</button>
           </div>
         </div>
       </div>
-    </div>
-    <div class="shipping-container">
-      <h1 class="header">Shipping details</h1>
-      <div class="custom-input">
-        <input type="text" v-model="address" placeholder="Address" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="unitNo" placeholder="Unit No" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="city" placeholder="City" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="country" placeholder="Country" autocomplete="off" />
-      </div>
-      <div class="custom-input">
-        <input type="text" v-model="zipCode" placeholder="Zip Code" autocomplete="off" />
-      </div>
-    </div>
-    <div class="submit-container">
-      <button @click="submitForm" :disabled="isSubmitting"
-        :style="{ backgroundColor: addToCartBg, color: addToCartBgTextColor, padding: '10px 20px', border: 'none', borderRadius: '5px', width: '150px', cursor: 'pointer', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }">
-        <span v-if="isSubmitting" id="loading"></span>
-        <span v-else>{{ buttonText }} Submit</span>
-      </button>
-    </div>
-    <div id="toast" class="toast">Product added to cart!</div>
-    <div id="error-toast" class="toast" style="background-color: red;"></div>
-    <div class="cart-icon" :class="{ show: cart.length > 0 }" @click="toggleCartOverlay">
-      🛒
-    </div>
-    <div class="cart-overlay" :class="{ show: isCartOverlayVisible }">
-      <div v-for="(item, index) in cart" :key="index" class="cart-item">
-        <img :src="item.images[0].originalSrc" :alt="item.title" />
-        <div class="cart-item-details">
-          <div class="cart-item-title">{{ item.title }}</div>
-          <div v-if="item.variants.length > 1" class="cart-item-variant">Variant: {{ item.variants.find(variant =>
-            variant.id === item.selectedVariantId).title }}</div>
-          <div class="cart-item-quantity">Quantity: {{ item.quantity }}</div>
+
+      <div class="container-2">
+        <div class="product">
+          <div class="product-heading">
+            <h2>Choose Product</h2>
+          </div>
+          <div class="product-details">
+            <div v-for="(product, index) in products" :key="index" class="product-image">
+              <div class="first">
+                <div class="image">
+                  <img :src="product.images[0].originalSrc" :alt="product.title">
+                </div>
+                <div class="text">
+                  <h3>{{ product.title }}<h3>
+                  <p>${{ product.variants[0].price }}<p>
+                </div>
+              </div>
+              <div class="second">
+                <div class="icon-1">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="icon-2">
+                  <i class="fa-solid fa-trash" @click="removeFromCart(index)"></i>
+                  <h4>{{ product.quantity }}X<h4>
+                  <i class="fa-solid fa-plus" @click="addToCart(product)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="remove-icon" @click="removeFromCart(index)">🗑️</div>
       </div>
-    </div>
+
+      <div class="container-3">
+        <div class="shipping-heading">
+          <h2>Shipping Details</h2>
+        </div>
+        <div class="new-details">
+          <div class="form-1">
+            <form>
+              <div class="form-2">
+                <input type="text" id="address" v-model="address" placeholder="Address" autocomplete="off" />
+                <input type="text" id="unit-no" v-model="unitNo" placeholder="Unit No" autocomplete="off" />
+                <div class="new-column">
+                  <input type="text" id="city" v-model="city" placeholder="City" autocomplete="off" />
+                  <select v-model="country" id="country">
+                    <option value="country">Country</option>
+                    <option value="india">India</option>
+                    <option value="germany">Germany</option>
+                    <option value="london">London</option>
+                    <option value="cananda">Canada</option>
+                  </select>
+                </div>
+                <input type="text" id="zip-code" v-model="zipCode" placeholder="Zip Code" autocomplete="off" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="form-button">
+          <button @click="submitForm" :disabled="isSubmitting">
+            <span v-if="isSubmitting" id="loading"></span>
+            <span v-else>{{ buttonText }} Submit</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
