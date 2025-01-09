@@ -487,6 +487,27 @@
     </div>
   </div>
 
+  <div id="toast" class="toast">Product added to cart</div>
+  <div id="error-toast" class="toast"></div>
+
+  <div v-if="isCartOverlayVisible" class="cart-overlay">
+    <div class="cart-container">
+      <h2>Your Cart</h2>
+      <div v-for="(item, index) in cart" :key="index" class="cart-item">
+        <div class="cart-item-details">
+          <img :src="item.images[0].originalSrc" :alt="item.title">
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: ${{ item.variants.find(variant => variant.id === item.selectedVariantId).price }}</p>
+          </div>
+        </div>
+        <button @click="removeFromCart(index)">Remove</button>
+      </div>
+      <button @click="toggleCartOverlay">Close Cart</button>
+    </div>
+  </div>
+
   <script>
     // Create a new Vue instance
     const app = Vue.createApp({
