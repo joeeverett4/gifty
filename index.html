@@ -413,32 +413,31 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="container-2">
-        <div class="product">
-          <div class="product-heading">
-            <h2>Choose Product</h2>
-          </div>
-          <div class="product-details">
-            <div v-for="(product, index) in products" :key="index" class="product-image">
-              <div class="first">
-                <div class="image">
-                  <img :src="product.images[0].originalSrc" :alt="product.title">
+        <div class="container-2">
+          <div class="product">
+            <div class="product-heading">
+              <h2>Choose Product</h2>
+            </div>
+            <div class="product-details">
+              <div v-for="(product, index) in products" :key="index" class="product-image">
+                <div class="first">
+                  <div class="image">
+                    <img :src="product.images[0].originalSrc" :alt="product.title">
+                  </div>
+                  <div class="text">
+                    <h3>{{ product.title }}<h3>
+                    <p>${{ product.variants[0].price }}<p>
+                  </div>
                 </div>
-                <div class="text">
-                  <h3>{{ product.title }}<h3>
-                  <p>${{ product.variants[0].price }}<p>
-                </div>
-              </div>
-              <div class="second">
-                <div class="icon-1">
-                  <i class="fa-solid fa-cart-shopping"></i>
-                </div>
-                <div class="icon-2">
-                  <i class="fa-solid fa-trash" @click="removeFromCart(index)"></i>
-                  <h4>{{ product.quantity }}X<h4>
-                  <i class="fa-solid fa-plus" @click="addToCart(product)"></i>
+                <div class="second">
+                  <div class="icon-1">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+                  <div class="icon-2">
+                    <i class="fa-solid fa-trash" @click="removeFromCart(index)"></i>
+                    <h4>{{ product.quantity }}X<h4>
+                    <i class="fa-solid fa-plus" @click="addToCart(product)"></i>
+                  </div>
                 </div>
               </div>
             </div>
