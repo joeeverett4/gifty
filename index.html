@@ -209,6 +209,7 @@
     .icon-1 {
       padding: 0px 20px;
       font-size: 20px;
+      display:none;
     }
 
     .icon-2 h4 {
@@ -220,7 +221,6 @@
       align-items: center;
       border: 1px solid #80808042;
       gap: 9px;
-      background-color: #80808042;
       border-radius: 19px;
     }
 
@@ -337,7 +337,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       padding: 20px;
-      display: block; /* Make the cart overlay visible by default */
+      display: none; /* Make the cart overlay hidden by default */
       z-index: 2;
     }
 
@@ -621,7 +621,7 @@
           products: [], // Assuming products data will be populated
           cart: [], // Array to hold products added to the cart
           shopName: '', // Variable to hold the shop name
-          isCartOverlayVisible: true, // Variable to control the visibility of the cart overlay, set to true by default
+          isCartOverlayVisible: false, // Variable to control the visibility of the cart overlay, set to false by default
           linkId: '', // Variable to hold the linkId
           isSubmitting: false, // Variable to control the loading state of the submit button
           buttonText: 'Submit', // Default button text
