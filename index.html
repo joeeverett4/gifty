@@ -433,7 +433,7 @@
 
         const data = await fetchLinks(campaignId, linkId, shopId, shopDomain); // Fetch and set products, shopName, buttonText, primaryBgColor, and heading when the component is mounted
      
-        console.log("DATA")
+        console.log("DATAzz")
         console.log(data)
         this.products = data.products.map(product => ({ ...product, quantity: 1, selectedVariantId: product.variants[0].id })); // Initialize quantity to 1 and selectedVariantId to the first variant for each product
         this.shopName = data.shopName;
